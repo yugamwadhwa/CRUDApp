@@ -6,14 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @GetMapping("/")
+    @ResponseBody
+    public List<Employee> listEmp(){
+        return this.employeeService.getAllEmployee();
+    }
     @PostMapping("/addemp")
     @ResponseBody
-    public String addNewEmp(Employee employee){
+    public String addNewEmp(@RequestBody Employee employee){
+        System.out.println(employee.toString());
         employeeService.save(employee);
         return "added successfully";
     }
@@ -31,9 +39,10 @@ public class EmployeeController {
         employeeService.deleteById(id);
         return "sucessfully deleted";
     }
-    @PutMapping("/updataemp/{id}")
+    @PutMapping("/updateemp/{id}")
     @ResponseBody
-    public Employee updateemp(@RequestBody String name,@PathVariable Long id){
+    public Employee updateemp(@PathVariable Long id,@RequestBody String name){
+        System.out.println(name);
        return this.employeeService.updateemp(name,id);
     }
 

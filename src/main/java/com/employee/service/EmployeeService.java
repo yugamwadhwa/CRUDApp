@@ -13,6 +13,7 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
 
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
@@ -35,7 +36,7 @@ public class EmployeeService {
     }
 
 
-    public Employee getById(Long id) {
+    public  Employee getById(Long id) {
          Employee employee=null;
          if(Objects.nonNull(id)){
              Optional<Employee> optionalEmployee= employeeRepository.findById(id);
@@ -59,6 +60,7 @@ public class EmployeeService {
     public Employee updateemp(String name,Long id){
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
         employee.setName(name);
+        employeeRepository.save(employee);
         return employee;
     }
 }

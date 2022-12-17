@@ -69,6 +69,7 @@ class EmployeeServiceTest {
 
     @Test
     void updateemp() {
-
+        Mockito.when(employeeRepository.findById(1L)).thenReturn(Optional.of(emp));
+        assertEquals(emp,employeeService.getById(1L));
     }
 }
