@@ -37,42 +37,30 @@ class EmployeeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-//    @Autowired
-//    private WebApplicationContext context;
+
 
     ObjectMapper om= new ObjectMapper();
 
     @MockBean
     EmployeeService employeeService;
-//
+
     @MockBean
     EmployeeRepository employeeRepository;
-//
-//    private Employee employee;
+
 
 
     @Test
     void listEmp() throws Exception {
-//        Employee employee = new Employee();
-//        employee.setName("Yugam");
-//        employee.setEmail("yugamwadhwa1234@gmail.com");
-
-
         mockMvc.perform(get("/").contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(MockMvcResultMatchers.status().isOk());
-
-
     }
 
     @Test
     void addNewEmp() throws Exception {
-        //ObjectMapper objectMapper = new ObjectMapper();
-        //String userJSON = objectMapper.writeValueAsString(employee);
         Employee employee = new Employee();
         employee.setName("Yugam");
         employee.setEmail("yugamwadhwa1234@gmail.com");
         String jsonRequest=om.writeValueAsString(employee);
         mockMvc.perform(post("/addemp").contentType(MediaType.APPLICATION_JSON).content(jsonRequest)).andExpect(MockMvcResultMatchers.status().isOk());
-
     }
 
     @Test
@@ -87,14 +75,19 @@ class EmployeeControllerTest {
 
     @Test
     void delemp() throws Exception {
-        Employee employee = new Employee();
-        employee.setName("Yugam");
-        employee.setEmail("yugamwadhwa1234@gmail.com");
+        Employee employee = new Employee("Yugam","yugamwadhwa1234@gmail.com");
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/delemp/1")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    void updateemp() {
+    void updateemp() throws Exception {
+        Employee employee = new Employee();
+        employee.setName("Yugam");
+        employee.setId(1L);
+        employee.setEmail("yugamwadhwa1234@gmail.com");
+        when(employeeService.updateemp("test",1L)).thenReturn(employee);
+
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/updateemp/1").content("test")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 }
