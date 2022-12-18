@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) //TO generate id automatically
     private long id;
 
     private String name;
@@ -17,16 +17,18 @@ public class Employee {
 
     private String age;
 
+    private String designation;
+    // CONSTRUCTOR
     public Employee(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
-
+    //DEFAULT CONSTRUCTOR
     public Employee() {
     }
 
-    private String designation;
+    //GETTER AND SETTER
 
     public long getId() {
         return id;

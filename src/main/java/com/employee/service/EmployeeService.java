@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Optional;
+// MAIN LOGIC IS WRITTEN IN THIS LAYER
 
 @Service
 public class EmployeeService {
@@ -32,7 +32,6 @@ public class EmployeeService {
         if(Objects.nonNull(employee)){
             employeeRepository.save(employee);
         }
-
     }
 
 
