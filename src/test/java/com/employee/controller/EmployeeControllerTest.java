@@ -75,7 +75,7 @@ class EmployeeControllerTest {
 
     @Test
     void delemp() throws Exception {
-        Employee employee = new Employee("Yugam","yugamwadhwa1234@gmail.com");
+        Employee employee = new Employee("Yugam","yugamwadhwa1234@gmail.com","21","student");
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/delemp/1")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 

@@ -41,9 +41,9 @@ public class EmployeeController {
     }
     @PutMapping("/updateemp/{id}")
     @ResponseBody
-    public Employee updateemp(@PathVariable Long id,@RequestBody String name){
-        System.out.println(name);
-       return this.employeeService.updateemp(name,id);
+    public Employee updateemp(@PathVariable Long id,@RequestBody String designation){
+        System.out.println(designation);
+       return this.employeeService.updateemp(designation,id);
     }
 
 

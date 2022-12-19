@@ -46,9 +46,9 @@ public class EmployeeService {
        }
     }
 
-    public Employee updateemp(String name,Long id){
+    public Employee updateemp(String designation,Long id){
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
-        employee.setName(name);
+        employee.setDesignation(designation);
         employeeRepository.save(employee);
         return employee;
     }

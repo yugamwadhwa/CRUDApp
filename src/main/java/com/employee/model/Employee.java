@@ -19,12 +19,14 @@ public class Employee {
 
     private String designation;
     // CONSTRUCTOR
-    public Employee(String name, String email) {
+    public Employee(String name, String email,String age,String designation) {
         this.name = name;
         this.email = email;
+        this.designation=designation;
+        this.age=age;
     }
 
-    //DEFAULT CONSTRUCTOR
+    //CONSTRUCTOR
     public Employee() {
     }
 

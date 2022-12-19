@@ -37,16 +37,10 @@ class EmployeeServiceTest {
 
     @Test
     void getAllEmployee() {
-       //List<Employee> employeeList= new ArrayList<>();
-       // List<Employee> employeeList = employeeRepository.findAll();
         List<Employee> emplist = new ArrayList<>();
         emplist.add(emp);
-
         Mockito.when(employeeRepository.findAll()).thenReturn(emplist);
-
         Assertions.assertEquals(emplist,employeeService.getAllEmployee());
-
-
     }
 
     @Test
